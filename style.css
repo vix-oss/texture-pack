@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('image/UI2.JPG'); 
+    background-image: url('image/UI2.jpg'); 
     backdrop-filter: blur(.5rem) !important;
     background-size: cover; 
     background-position: center; 
@@ -262,6 +262,7 @@ footer {
     width: 350px;
     transition: 0.3s;
 }
+
 
 
 
