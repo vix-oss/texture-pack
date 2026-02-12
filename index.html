@@ -28,7 +28,13 @@
         <div class="social-media">
             </div>
     </footer>
-
+<div id="packModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <div id="modalBody">
+            </div>
+    </div>
+</div>
     <script>
 const packs = [
     {
@@ -60,17 +66,19 @@ const packs = [
 function renderPacks() {
     const container = document.getElementById('downloads');
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    
     container.innerHTML = "";
 
-    packs.forEach(pack => {
+    packs.forEach((pack, index) => {
         if (pack.name.toLowerCase().includes(searchTerm)) {
             const card = `
-                <div class="download-item">
+                <div class="download-item" onclick="openModal(${index})">
                     <img src="${pack.image}" alt="${pack.name}">
-                    <h2>${pack.name}</h2>
+                    <div class="info">
+                        <h2>${pack.name}</h2>
+                        <p style="color: #aaa; font-size: 0.9em;">點擊查看詳情</p>
+                    </div>
                     <button class="custom-button ${pack.style}" 
-                        onclick="downloadFile('${pack.file}', '${pack.name}.zip')">
+                        onclick="event.stopPropagation(); downloadFile('${pack.file}', '${pack.name}.zip')">
                         Download
                     </button>
                 </div>
@@ -78,6 +86,26 @@ function renderPacks() {
             container.innerHTML += card;
         }
     });
+}
+
+function openModal(index) {
+    const pack = packs[index];
+    const modal = document.getElementById('packModal');
+    const body = document.getElementById('modalBody');
+    
+    body.innerHTML = `
+        <img src="${pack.image}" style="width:100%; border-radius:10px; margin-bottom:15px;">
+        <h1 style="color:#63d7ff">${pack.name}</h1>
+        <hr border="0" style="border-top:1px solid #444; margin:15px 0;">
+        <h3>詳細資訊：</h3>
+        <p style="line-height:1.6; font-size:1.1em;">${pack.description}</p>
+        <p style="margin-top:20px; color:#888;">版本: 1.0.0 | 類型: Bloxd Texture Pack</p>
+    `;
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById('packModal').style.display = "none";
 }
 
 function downloadFile(filePath, fileName) {
@@ -88,11 +116,17 @@ function downloadFile(filePath, fileName) {
     link.click();
     document.body.removeChild(link);
 }
-
+window.onclick = function(event) {
+    const modal = document.getElementById('packModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
 window.onload = renderPacks;
     </script>
 </body>
 </html>
+
 
 
 
