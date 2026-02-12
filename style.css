@@ -234,6 +234,30 @@ footer {
     }
 }
 
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#searchInput {
+    padding: 10px 20px;
+    width: 300px;
+    border-radius: 20px;
+    border: 1.5px solid #63d7ff;
+    background: rgba(17, 38, 51, 0.7);
+    color: white;
+    outline: none;
+    font-size: 16px;
+    backdrop-filter: blur(5px);
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 10px #63d7ff;
+    width: 350px;
+    transition: 0.3s;
+}
+
+
 
 
 
