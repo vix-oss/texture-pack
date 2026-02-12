@@ -33,10 +33,83 @@
     </footer>
 
     <script>
-        // 把我上一段給你的 JavaScript 代碼貼在這裡
+// 1. 這是你的材質包資料庫
+const packs = [
+    {
+        name: "Astray (Updated)",
+        image: "image/Astray.png",
+        file: "files/Astray.zip",
+        style: "download-button-astray"
+    },
+    {
+        name: "Relonix",
+        image: "image/image4.png",
+        file: "files/Relonix.zip",
+        style: "download-button-relonix"
+    },
+    {
+        name: "Relonix White",
+        image: "image/image5.png",
+        file: "files/Relonix White.zip",
+        style: "download-button-relonix-white"
+    },
+    {
+        name: "Sublight",
+        image: "image/image0.png",
+        file: "files/Sublight.zip",
+        style: "download-button"
+    },
+    {
+        name: "Bare Bones",
+        image: "image/image3.png",
+        file: "files/BareBones.zip",
+        style: "download-button-barebones"
+    },
+    {
+        name: "Xray Ultimate",
+        image: "image/image2.png",
+        file: "files/Xray Ultimate.zip",
+        style: "download-button-xray"
+    }
+];
+
+function renderPacks() {
+    const container = document.getElementById('downloads');
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    container.innerHTML = "";
+
+    packs.forEach(pack => {
+        if (pack.name.toLowerCase().includes(searchTerm)) {
+            const card = `
+                <div class="download-item">
+                    <img src="${pack.image}" alt="${pack.name}">
+                    <h2>${pack.name}</h2>
+                    <button class="custom-button ${pack.style}" 
+                        onclick="downloadFile('${pack.file}', '${pack.name}.zip')">
+                        Download
+                    </button>
+                </div>
+            `;
+            container.innerHTML += card;
+        }
+    });
+}
+
+function downloadFile(filePath, fileName) {
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+window.onload = renderPacks;
     </script>
 </body>
 </html>
+
 
 
 
