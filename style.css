@@ -46,7 +46,8 @@ main {
 }
 
 .download-item {
-    background-color: rgb(17 38 51 / 48%); /* Semi-transparent background for download items */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: rgb(17 38 51 / 48%);
     border-radius: 8px;
     padding: 15px;
     margin: 10px 0;
@@ -57,6 +58,13 @@ main {
     width: 500px;
     backdrop-filter: blur(2px);
     border: 1.25px solid #63d7ff;
+}
+
+.download-item:hover {
+    transform: translateY(-5px);
+    border-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(99, 215, 255, 0.3);
+    background-color: rgb(17 38 51 / 70%);
 }
 
 .download-item img {
@@ -225,6 +233,7 @@ footer {
         margin-bottom: 10px;
     }
 }
+
 
 
 
