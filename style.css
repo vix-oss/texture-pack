@@ -1,0 +1,230 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('image/UI2.jpg'); /* Set your background image URL here */
+    backdrop-filter: blur(.5rem) !important;
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+}
+
+header {
+    background-color: rgb(17 38 51 / 48%); /* Semi-transparent header */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    font-size: 2em
+}
+
+main {
+    flex: 1; /* Allow the main section to expand and push the footer down */
+    padding: 20px;
+}
+
+.downloads {
+    margin: 20px 0;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+
+.download-item {
+    background-color: rgb(17 38 51 / 48%); /* Semi-transparent background for download items */
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    backdrop-filter: blur(2px);
+    border: 1.25px solid #63d7ff;
+}
+
+.download-item img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.download-item img:hover {
+    transform: scale(1.05);
+}
+
+.custom-button {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.download-button {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+}
+
+.download-button:hover {
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+.download-button-xray {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #1cb2c9;
+}
+
+.download-button-xray:hover {
+    background-color: #3bdef7;
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+.download-button-barebones {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #2beb24 0%, #0ab33d 74%);
+}
+
+.download-button-barebones:hover {
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #2beb24 0%, #0ab33d 74%);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+.download-button-astray {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #1fd1f9;
+    background-image: linear-gradient(349deg, #1a6eca 0%, #1fbee2 74%);
+}
+
+.download-button-astray:hover {
+    background-color: #1fd1f9;
+    background-image: linear-gradient(349deg, #3294ff 0%, #65e3ff 74%);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+.download-button-relonix {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #2e75c7 0%, #54b8ff 74%);
+}
+
+.download-button-relonix:hover {
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #348aed 0%, #6ec3ff 74%);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+.download-button-relonix-white {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #d9d9d9 0%, #f2f2f2 74%);
+}
+
+.download-button-relonix-white:hover {
+    background-color: #1fd1f9;
+    background-image: linear-gradient(315deg, #e0e0e0 0%, #ffffff 74%);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(17 38 51 / 48%); /* Semi-transparent footer */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-media a {
+    margin: 0 10px;
+    color: #86d5fc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: #9a66e3;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    .download-item {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px 0;
+    }
+
+    .download-item img {
+        width: 100%; /* Make images full width on mobile */
+        margin-bottom: 10px;
+    }
+}
+
+
+
