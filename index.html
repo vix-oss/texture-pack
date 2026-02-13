@@ -42,28 +42,35 @@ const packs = [
         image: "image/50Sub.png",
         file: "files/50SUB T-PACK.zip",
         style: "download-button-astray",
-        description: "50訂閱紀念材質包!有著美妙的css，工具為32x32。"
+        description: "50訂閱紀念材質包!有著美妙的css，工具為32x32。",
+        version: "v1.2.0",
+        type: "PVP/Bedwars"
     },
     {
         name: "SnowPack",
         image: "image/Snow.png",
         file: "files/Liam t-pack by Vicaloser.zip",
         style: "download-button-relonix",
-        description: "Liam委託製作，有短劍和優美的雪地風格css。"
+        description: "Liam委託製作，有短劍和優美的雪地風格css。",
+        version: "v1.4.0",
+        type: "PVP/Bedwars"
     },
     {
         name: "Supay 16x",
         image: "image/Supay.png",
         file: "files/Supay 16x.zip",
         style: "download-button-relonix-white",
-        description: "最好的PVP材質包，是從Minecraft轉換過來。"
-    },
+        description: "最好的PVP材質包，是從Minecraft轉換過來。",
+        version: "v2.0.0",
+        type: "PVP/Bedwars/Survival"
     {
         name: "Vic 32x",
         image: "image/Vic 32x.png",
         file: "files/Vic 32x.zip",
         style: "download-button",
-        description: "適合生存的32x材質包，部分材質來自Faithful 32x。"
+        description: "適合生存的32x材質包，部分材質來自Faithful 32x。",
+        version: "v0.8.0",
+        type: "Survival"
     }
 ];
 
@@ -101,9 +108,18 @@ function openModal(index) {
         <img src="${pack.image}" style="width:100%; border-radius:10px; margin-bottom:15px;">
         <h1 style="color:#63d7ff">${pack.name}</h1>
         <hr border="0" style="border-top:1px solid #444; margin:15px 0;">
+        
         <h3>詳細資訊：</h3>
         <p style="line-height:1.6; font-size:1.1em;">${pack.description}</p>
-        <p style="margin-top:20px; color:#888;">版本: 1.0.0 | 類型: Bloxd Texture Pack</p>
+        
+        <p style="margin-top:20px; color:#888;">
+            版本: ${pack.version} | 類型: ${pack.type}
+        </p>
+
+        <button class="custom-button ${pack.style}" style="margin-top:15px; width:100%;"
+            onclick="downloadFile('${pack.file}', '${pack.name}.zip')">
+            立即下載 ${pack.name}
+        </button>
     `;
     modal.style.display = "block";
 }
@@ -130,3 +146,4 @@ window.onload = renderPacks;
     </script>
 </body>
 </html>
+
