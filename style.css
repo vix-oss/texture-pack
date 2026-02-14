@@ -207,6 +207,22 @@ main {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
+.download-button-qwesta {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #f91f1f;
+    background-image: linear-gradient(349deg, #ca1a1a 0%, #e21f1f 74%);
+}
+
+.download-button-qwesta:hover {
+    background-color: ##f91f1f;
+    background-image: linear-gradient(349deg, #ff3232 0%, #ff6565 74%);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
 footer {
     text-align: center;
     padding: 10px;
@@ -315,3 +331,4 @@ footer {
 .download-item {
     cursor: pointer;
 }
+
