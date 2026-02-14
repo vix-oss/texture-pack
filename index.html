@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <body>
 <header>
     <h1>Vicaloser</h1>
-    </header>
+</header>
     
     <h2>材質包</h2>
     <h3>本網站架構來自BloxdMan，背景圖片來自gemini</h3>
@@ -25,9 +25,8 @@
 
     <footer>
         <p>&copy; Bloxd man, Vicaloser 2026</p>
-        <div class="social-media">
-            </div>
     </footer>
+
 <div id="packModal" class="modal">
     <div class="modal-content">
         <span class="close-button" onclick="closeModal()">&times;</span>
@@ -35,9 +34,11 @@
             </div>
     </div>
 </div>
-    <script>
+
+<script>
 const packs = [
     {
+        id: "vica_50sub",
         name: "50Sub",
         image: "image/50Sub.png",
         file: "files/50SUB T-PACK.zip",
@@ -47,6 +48,7 @@ const packs = [
         type: "PVP/Bedwars"
     },
     {
+        id: "vica_snow",
         name: "SnowPack",
         image: "image/Snow.png",
         file: "files/Liam t-pack by Vicaloser.zip",
@@ -56,6 +58,7 @@ const packs = [
         type: "PVP/Bedwars"
     },
     {
+        id: "vica_supay",
         name: "Supay 16x",
         image: "image/Supay.png",
         file: "files/Supay 16x.zip",
@@ -65,6 +68,7 @@ const packs = [
         type: "PVP/Bedwars/Survival"
     },
     {
+        id: "vica_vic32",
         name: "Vic 32x",
         image: "image/Vic 32x.png",
         file: "files/Vic 32x.zip",
@@ -74,11 +78,12 @@ const packs = [
         type: "Survival"
     },
     {
+        id: "vica_qwesta",
         name: "Qwesta 16x",
         image: "image/1.png",
         file: "files/Qwesta 16x.zip",
         style: "download-button-qwesta",
-        description: "超級好的PVP材質包! 為Minecraft轉換而來，請支持原材質包：https://www.youtube.com/watch?v=jysE_rsFh-o&t=4s",
+        description: "超級好的PVP材質包! 為Minecraft轉換而來。",
         version: "vBETA",
         type: "PVP/Bedwars"
     }
@@ -99,7 +104,7 @@ function renderPacks() {
                         <p style="color: #aaa; font-size: 0.9em;">點擊查看詳情</p>
                     </div>
                     <button class="custom-button ${pack.style}" 
-                        onclick="event.stopPropagation(); downloadFile('${pack.file}', '${pack.name}.zip')">
+                        onclick="event.stopPropagation(); downloadFile('${pack.file}', '${pack.name}.zip', '${pack.id}')">
                         Download
                     </button>
                 </div>
@@ -117,28 +122,44 @@ function openModal(index) {
     body.innerHTML = `
         <img src="${pack.image}" style="width:100%; border-radius:10px; margin-bottom:15px;">
         <h1 style="color:#63d7ff">${pack.name}</h1>
+        <p id="counter_${pack.id}" style="color:#FFD700; font-weight:bold;">下載次數: 讀取中...</p>
         <hr border="0" style="border-top:1px solid #444; margin:15px 0;">
-        
         <h3>詳細資訊：</h3>
         <p style="line-height:1.6; font-size:1.1em;">${pack.description}</p>
-        
-        <p style="margin-top:20px; color:#888;">
-            版本: ${pack.version} | 類型: ${pack.type}
-        </p>
-
+        <p style="margin-top:20px; color:#888;">版本: ${pack.version} | 類型: ${pack.type}</p>
         <button class="custom-button ${pack.style}" style="margin-top:15px; width:100%;"
-            onclick="downloadFile('${pack.file}', '${pack.name}.zip')">
+            onclick="downloadFile('${pack.file}', '${pack.name}.zip', '${pack.id}')">
             立即下載 ${pack.name}
         </button>
     `;
     modal.style.display = "block";
+
+    fetch(`https://countapi.it/get/vicaloser_web/${pack.id}`)
+        .then(res => res.json())
+        .then(data => {
+            const countElement = document.getElementById(`counter_${pack.id}`);
+            if(countElement) countElement.innerText = `下載次數: ${data.value || 0}`;
+        })
+        .catch(() => {
+            const countElement = document.getElementById(`counter_${pack.id}`);
+            if(countElement) countElement.innerText = `下載次數: 暫無數據`;
+        });
 }
 
 function closeModal() {
     document.getElementById('packModal').style.display = "none";
 }
 
-function downloadFile(filePath, fileName) {
+function downloadFile(filePath, fileName, packId) {
+    if (packId) {
+        fetch(`https://countapi.it/hit/vicaloser_web/${packId}`)
+            .then(res => res.json())
+            .then(data => {
+                const countElement = document.getElementById(`counter_${packId}`);
+                if(countElement) countElement.innerText = `下載次數: ${data.value}`;
+            });
+    }
+
     const link = document.createElement('a');
     link.href = filePath;
     link.download = fileName;
@@ -146,17 +167,12 @@ function downloadFile(filePath, fileName) {
     link.click();
     document.body.removeChild(link);
 }
+
 window.onclick = function(event) {
     const modal = document.getElementById('packModal');
-    if (event.target == modal) {
-        closeModal();
-    }
+    if (event.target == modal) closeModal();
 }
 window.onload = renderPacks;
-    </script>
+</script>
 </body>
 </html>
-
-
-
-
