@@ -133,17 +133,24 @@ function openModal(index) {
         </button>
     `;
     modal.style.display = "block";
+    const updateCount = () => {
+        fetch(`https://api.countapi.xyz/get/vicaloser_web/${pack.id}`)
+            .then(res => {
+                if (!res.ok) throw new Error();
+                return res.json();
+            })
+            .then(data => {
+                const countElement = document.getElementById(`counter_${pack.id}`);
+                if(countElement) countElement.innerText = `總下載次數: ${data.value || 0}`;
+            })
+            .catch(() => {
+                fetch(`https://api.countapi.xyz/hit/vicaloser_web/${pack.id}`);
+                const countElement = document.getElementById(`counter_${pack.id}`);
+                if(countElement) countElement.innerText = `下載次數: 1 (新建立)`;
+            });
+    };
 
-    fetch(`https://countapi.it/get/vicaloser_web/${pack.id}`)
-        .then(res => res.json())
-        .then(data => {
-            const countElement = document.getElementById(`counter_${pack.id}`);
-            if(countElement) countElement.innerText = `下載次數: ${data.value || 0}`;
-        })
-        .catch(() => {
-            const countElement = document.getElementById(`counter_${pack.id}`);
-            if(countElement) countElement.innerText = `下載次數: 暫無數據`;
-        });
+    updateCount();
 }
 
 function closeModal() {
@@ -176,3 +183,4 @@ window.onload = renderPacks;
 </script>
 </body>
 </html>
+
