@@ -11,8 +11,8 @@
     <h1>Vicaloser</h1>
 </header>
     
-    <h2>材質包</h2>
-    <h3>本網站架構來自BloxdMan，背景圖片來自gemini</h3>
+    <h2>Texture Packs</h2>
+    <h3>This web by BloxdMan，Background by gemini</h3>
 
     <div class="search-container">
         <input type="text" id="searchInput" onkeyup="renderPacks()" placeholder="Search...">
@@ -84,7 +84,17 @@ const packs = [
         file: "files/Qwesta 16x.zip",
         style: "download-button-qwesta",
         description: "超級好的PVP材質包! 為Minecraft轉換而來。",
-        version: "vBETA",
+        version: "v1.0",
+        type: "PVP/Bedwars"
+    },
+    {
+        id: "vica_zion",
+        name: "Zion 8x",
+        image: "image/zion 8x.png",
+        file: "files/Zion 8x.zip",
+        style: "download-button-zion",
+        description: "【FPS BOOST!】8x PvP Pack by Chr7st Port by me",
+        version: "v1.0",
         type: "PVP/Bedwars"
     }
 ];
@@ -101,7 +111,7 @@ function renderPacks() {
                     <img src="${pack.image}" alt="${pack.name}">
                     <div class="info">
                         <h2>${pack.name}</h2>
-                        <p style="color: #aaa; font-size: 0.9em;">點擊查看詳情</p>
+                        <p style="color: #aaa; font-size: 0.9em;">Description</p>
                     </div>
                     <button class="custom-button ${pack.style}" 
                         onclick="event.stopPropagation(); downloadFile('${pack.file}', '${pack.name}.zip', '${pack.id}')">
@@ -122,14 +132,14 @@ function openModal(index) {
     body.innerHTML = `
         <img src="${pack.image}" style="width:100%; border-radius:10px; margin-bottom:15px;">
         <h1 style="color:#63d7ff">${pack.name}</h1>
-        <p id="counter_${pack.id}" style="color:#FFD700; font-weight:bold;">下載次數: 讀取中...</p>
+        <p id="counter_${pack.id}" style="color:#FFD700; font-weight:bold;">Downloads: load...</p>
         <hr border="0" style="border-top:1px solid #444; margin:15px 0;">
-        <h3>詳細資訊：</h3>
+        <h3>Description：</h3>
         <p style="line-height:1.6; font-size:1.1em;">${pack.description}</p>
-        <p style="margin-top:20px; color:#888;">版本: ${pack.version} | 類型: ${pack.type}</p>
+        <p style="margin-top:20px; color:#888;">Version: ${pack.version} | Type: ${pack.type}</p>
         <button class="custom-button ${pack.style}" style="margin-top:15px; width:100%;"
             onclick="downloadFile('${pack.file}', '${pack.name}.zip', '${pack.id}')">
-            立即下載 ${pack.name}
+            Download the ${pack.name}
         </button>
     `;
     modal.style.display = "block";
@@ -141,12 +151,12 @@ function openModal(index) {
             })
             .then(data => {
                 const countElement = document.getElementById(`counter_${pack.id}`);
-                if(countElement) countElement.innerText = `總下載次數: ${data.value || 0}`;
+                if(countElement) countElement.innerText = `Downloads: ${data.value || 0}`;
             })
             .catch(() => {
                 fetch(`https://api.countapi.xyz/hit/vicaloser_web/${pack.id}`);
                 const countElement = document.getElementById(`counter_${pack.id}`);
-                if(countElement) countElement.innerText = `下載次數: 1 (新建立)`;
+                if(countElement) countElement.innerText = `Downloads: 1`;
             });
     };
 
@@ -163,7 +173,7 @@ function downloadFile(filePath, fileName, packId) {
             .then(res => res.json())
             .then(data => {
                 const countElement = document.getElementById(`counter_${packId}`);
-                if(countElement) countElement.innerText = `下載次數: ${data.value}`;
+                if(countElement) countElement.innerText = `Downloads: ${data.value}`;
             });
     }
 
