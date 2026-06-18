@@ -239,6 +239,23 @@ main {
     transform: scale(1.05);
     cursor: pointer;
 }
+.download-button-xiaoniu {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: #e6e6e6;
+    background-image: linear-gradient(349deg, #ffe0e0 0%, #ffffff 74%);
+    color: white;
+}
+
+.download-button-xiaoniu:hover {
+    background-color: #ffffff;
+    background-image: linear-gradient(349deg, #ffeded 0%, #ffffff 74%);
+    filter: brightness(1.1);
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
 footer {
     text-align: center;
