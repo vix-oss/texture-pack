@@ -246,7 +246,7 @@ main {
     margin-left: auto;
     background-color: #e6e6e6;
     background-image: linear-gradient(349deg, #ffe0e0 0%, #ffffff 74%);
-    color: white;
+    color: #445566;
 }
 
 .download-button-xiaoniu:hover {
@@ -255,6 +255,7 @@ main {
     filter: brightness(1.1);
     transform: scale(1.05);
     cursor: pointer;
+    color: #2196f3;
 }
 
 footer {
